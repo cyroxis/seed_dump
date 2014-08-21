@@ -84,9 +84,9 @@ class SeedDump
 
       io.write("
 ].each do |data|
-  item = #{model_for(records)}.find_or_create_by(id: data[:id])
-  item.update_attributes(data)
-  item.save!
+  #{model_for(records)}.find_or_create_by(id: data[:id]) do |item|
+    item.assign_attributes(data)  
+  end
 end")
 
       if options[:file].present?
