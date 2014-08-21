@@ -87,7 +87,8 @@ class SeedDump
   #{model_for(records)}.find_or_create_by(id: data[:id]) do |item|
     item.assign_attributes(data)  
   end
-end")
+end
+")
 
       if options[:file].present?
         nil
