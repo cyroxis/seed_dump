@@ -67,7 +67,7 @@ class SeedDump
 
     def write_records_to_io(records, io, options)
       options[:exclude] ||= [:created_at, :updated_at]
-      
+
       io.write("[\n  ")
 
       enumeration_method = if records.is_a?(ActiveRecord::Relation) || records.is_a?(Class)
@@ -83,7 +83,7 @@ class SeedDump
       end
 
       io.write("
-].each {|data|
+].each do |data|
   item = #{model_for(records)}.find_or_create_by(id: data[:id])
   item.update_attributes(data)
   item.save!
