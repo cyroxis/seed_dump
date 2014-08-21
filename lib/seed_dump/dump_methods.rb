@@ -86,7 +86,8 @@ class SeedDump
         io.write(",\n  ") unless last_batch
       end
 
-      io.write(".each {|data|
+      io.write("
+].each {|data|
   item = #{model_for(records)}.find_or_create_by(id: data[:id])
   item.update_attributes(data)
   item.save!
