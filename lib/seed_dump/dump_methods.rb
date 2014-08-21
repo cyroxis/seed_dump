@@ -70,7 +70,7 @@ class SeedDump
 
       io.write('[')
       if options[:import]
-        io.write("[#{attribute_names(records, options).map {|name| name.to_sym.inspect}.join(', ')}], ")
+        io.write("#{attribute_names(records, options).map {|name| name.to_sym.inspect}.join(', ')}], ")
       end
       io.write("[\n  ")
 
