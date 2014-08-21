@@ -67,11 +67,7 @@ class SeedDump
 
     def write_records_to_io(records, io, options)
       options[:exclude] ||= [:created_at, :updated_at]
-
-      io.write('[')
-      if options[:import]
-        io.write("#{attribute_names(records, options).map {|name| name.to_sym.inspect}.join(', ')}], ")
-      end
+      
       io.write("[\n  ")
 
       enumeration_method = if records.is_a?(ActiveRecord::Relation) || records.is_a?(Class)
